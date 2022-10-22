@@ -7,6 +7,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -17,24 +19,24 @@ public class UserController {
         this.userService = userService;
     }
 
-    // TODO fix RequestBody
-    @PostMapping("/add")
-    public HttpEntity<String> createUser(@RequestParam String username, @RequestParam String password) {
-        String msg = userService.addUser(username, password);
+    @PostMapping
+    public HttpEntity<String> createUser(@RequestBody Map<String, String> userData) {
+        String msg = userService.addUser(userData.get("username"), userData.get("password"));
 
         return new HttpEntity<>(msg);
     }
 
-    @PutMapping("/password")
-    public HttpEntity<String> changePassword(@RequestParam String username, @RequestParam String password) {
-        String msg = userService.changePassword(username, password);
+    // TODO add oldPassword and newPassword
+    @PutMapping
+    public HttpEntity<String> changePassword(@RequestBody Map<String, String> userData) {
+        String msg = userService.changePassword(userData.get("username"), userData.get("password"));
 
         return new HttpEntity<>(msg);
     }
 
-    @DeleteMapping("/delete")
-    public HttpEntity<String> deleteUser(@RequestParam String username) {
-        String msg = userService.deleteUser(username);
+    @DeleteMapping
+    public HttpEntity<String> deleteUser(@RequestBody Map<String, String> userData) {
+        String msg = userService.deleteUser(userData.get("username"));
 
         return new HttpEntity<>(msg);
     }
