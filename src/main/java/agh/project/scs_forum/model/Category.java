@@ -6,13 +6,14 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "category")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userId;
-    private String username;
-    private String password;
+    private Long categoryId;
+    private String name;
+    private String moderatedBy;
 
 }
+

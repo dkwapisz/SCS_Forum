@@ -2,9 +2,11 @@ package agh.project.scs_forum.controller;
 
 import agh.project.scs_forum.model.User;
 import agh.project.scs_forum.repository.UserRepository;
+import agh.project.scs_forum.service.UserService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,19 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    UserRepository userRepository;
+    UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @PostMapping("/add")
-    public HttpEntity<HttpStatus> createUser() {
-        User user = new User();
-        user.setUsername("test");
-        userRepository.save(user);
+    public HttpEntity<String> createUser(@RequestBody String username, @RequestBody String password) {
+        String msg = userService.addUser(username,password);
 
-        return new HttpEntity<>(HttpStatus.OK);
+        return new HttpEntity<>(msg);
+    }
+
+    @PostMapping("/delete")
+    public HttpEntity<HttpStatus> deleteUser() {
+
+        return null;
     }
 
 }
