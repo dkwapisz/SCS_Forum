@@ -1,6 +1,7 @@
 package agh.project.scs_forum.model;
 
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 
@@ -14,5 +15,11 @@ public class User {
     private Long userId;
     private String username;
     private String password;
+    private String tempNewPassword;
 
+
+    @Override
+    public String toString() {
+        return "UserId: " + userId + ", Username: " + username;
+    }
 }

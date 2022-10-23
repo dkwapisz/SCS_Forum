@@ -5,8 +5,12 @@ import agh.project.scs_forum.repository.UserRepository;
 import agh.project.scs_forum.service.UserService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,26 +23,34 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public HttpEntity<String> createUser(@RequestBody Map<String, String> userData) {
-        String msg = userService.addUser(userData.get("username"), userData.get("password"));
-
-        return new HttpEntity<>(msg);
+    @GetMapping("/{username}")
+    public ResponseEntity<?> getUser(@PathVariable String username) {
+        return userService.getUserByUsername(username);
     }
 
-    // TODO add oldPassword and newPassword
-    @PutMapping
-    public HttpEntity<String> changePassword(@RequestBody Map<String, String> userData) {
-        String msg = userService.changePassword(userData.get("username"), userData.get("password"));
+    @GetMapping
+    public ResponseEntity<?> getAllUsers() {
+        return userService.getAllUsers();
+    }
 
-        return new HttpEntity<>(msg);
+    @PostMapping
+    public ResponseEntity<?> createUser(@RequestBody User newUser) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        return userService.addUser(newUser);
+    }
+
+    @PutMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@RequestBody User givenUser) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        return userService.changePassword(givenUser.getUsername(), givenUser.getPassword(), givenUser.getTempNewPassword());
     }
 
     @DeleteMapping
-    public HttpEntity<String> deleteUser(@RequestBody Map<String, String> userData) {
-        String msg = userService.deleteUser(userData.get("username"));
+    public ResponseEntity<?> deleteUser(@RequestBody User givenUser) {
+        return userService.deleteUser(givenUser.getUsername());
+    }
 
-        return new HttpEntity<>(msg);
+    @DeleteMapping
+    public ResponseEntity<?> deleteAllUsers() {
+        return userService.deleteAllUsers();
     }
 
 }
