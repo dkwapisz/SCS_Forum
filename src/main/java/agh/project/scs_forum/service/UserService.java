@@ -41,6 +41,19 @@ public class UserService {
         }
     }
 
+    public ResponseEntity<?> login(String username, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            return new ResponseEntity<>("Incorrect credentials.", HttpStatus.FORBIDDEN);
+        }
+        if (!passwordUtils.validatePassword(password, user.getPassword())) {
+            return new ResponseEntity<>("Incorrect credentials.", HttpStatus.FORBIDDEN);
+        }
+
+        return new ResponseEntity<>("Logged correctly.", HttpStatus.OK);
+    }
+
     public ResponseEntity<?> addUser(User newUser) throws NoSuchAlgorithmException, InvalidKeySpecException {
         if (userRepository.existsByUsername(newUser.getUsername())) {
             return new ResponseEntity<>("User with that username already exists.", HttpStatus.CONFLICT);

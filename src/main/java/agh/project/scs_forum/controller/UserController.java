@@ -33,6 +33,11 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody User user) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        return userService.login(user.getUsername(), user.getPassword());
+    }
+
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User newUser) throws NoSuchAlgorithmException, InvalidKeySpecException {
         return userService.addUser(newUser);
@@ -43,9 +48,9 @@ public class UserController {
         return userService.changePassword(givenUser.getUsername(), givenUser.getPassword(), givenUser.getTempNewPassword());
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteUser(@RequestBody User givenUser) {
-        return userService.deleteUser(givenUser.getUsername());
+    @DeleteMapping("/{username}")
+    public ResponseEntity<?> deleteUser(@PathVariable String username) {
+        return userService.deleteUser(username);
     }
 
     @DeleteMapping
