@@ -13,7 +13,6 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long postId;
-    private String name;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Long categoryId;
