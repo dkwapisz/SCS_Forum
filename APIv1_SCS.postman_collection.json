@@ -1,0 +1,944 @@
+{
+	"info": {
+		"_postman_id": "668dfb75-324f-43d3-adab-c2cb46cf3dcd",
+		"name": "SCS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/{{username}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"userTest1\",\n    \"password\": \"123\"\n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"userTest\",\n    \"password\": \"123\"\n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"userTest\",\n    \"password\": \"123\",\n    \"tempNewPassword\": \"1234\"\n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/changePassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAll",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteByUsername",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/{{username}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "getPostsByCreationDateAsc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}/post/creation/asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}",
+								"post",
+								"creation",
+								"asc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPostsByCreationDateDesc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}/post/creation/desc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}",
+								"post",
+								"creation",
+								"desc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPostsByModificationDateAsc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}/post/modified/asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}",
+								"post",
+								"modified",
+								"asc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPostsByModificationDateDesc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}/post/modified/desc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}",
+								"post",
+								"modified",
+								"desc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPostsByAlphabeticAsc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}/post/alphabetic/asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}",
+								"post",
+								"alphabetic",
+								"asc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPostsByAlphabeticDesc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}/post/alphabetic/desc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}",
+								"post",
+								"alphabetic",
+								"desc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPostById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/post/{{postId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createPost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"123\",\n    \"description\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/category/{{categoryId}}/post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryId}}",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editPost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"123\",\n    \"description\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/category/{{categoryId}}/post/{{postId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryId}}",
+								"post",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "increasePostRanking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/post/{{postId}}/ranking/increase",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"ranking",
+								"increase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decreasePostRanking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/post/{{postId}}/ranking/decrease",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"ranking",
+								"decrease"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePostById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postId\": \"userTest\"\n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/post/{{postId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "getCommentsByCreationDateAsc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/post/{{postId}}/comment/creation/asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"comment",
+								"creation",
+								"asc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCommentsByCreationDateDesc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/post/{{postId}}/comment/creation/desc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"comment",
+								"creation",
+								"desc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCommentsByRatingAsc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/post/{{postId}}/comment/rating/asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"comment",
+								"rating",
+								"asc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCommentsByRatingDesc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/post/{{postId}}/comment/rating/asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"comment",
+								"rating",
+								"asc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCommentByCommentId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/comment/{{commentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comment",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createComment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postId\": \"123\",\n    \"text\": \"userTest\",\n    \"createdBy\": \"123\" \n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/post/{{postId}}/comment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editComment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comment/{{commentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comment",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "increaseCommentRanking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comment/{{commentId}}/ranking/increase",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comment",
+								"{{commentId}}",
+								"ranking",
+								"increase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decreaseCommentRanking Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comment/{{commentId}}/ranking/decrease",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comment",
+								"{{commentId}}",
+								"ranking",
+								"decrease"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commentId\": \"userTest\"\n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comment/{{commentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comment",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "getAllCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategoryById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/id/{{categoryId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"id",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategoryByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/name/{{categoryName}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"name",
+								"{{categoryName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategoriesByModerators",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/moderator/test",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"moderator",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCategory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"userTest12\",\n    \"moderatedBy\": \"test\"\n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editCategoryName",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromName\": \"category123\",\n    \"toName\": \"category321\"\n}@",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategoryByName",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/category/{{categoryName}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"{{categoryName}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "getAllAdmins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "isAdmin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admin/{{username}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"userTest\",\n    \"addedBy\": \"123\"\n}",
+
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAdminByUsername",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin/{{username}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,17 +1,12 @@
 package agh.project.scs_forum.controller;
 
 import agh.project.scs_forum.model.User;
-import agh.project.scs_forum.repository.UserRepository;
 import agh.project.scs_forum.service.UserService;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/user")

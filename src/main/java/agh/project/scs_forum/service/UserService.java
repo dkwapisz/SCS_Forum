@@ -51,7 +51,7 @@ public class UserService {
             return new ResponseEntity<>("Incorrect credentials.", HttpStatus.FORBIDDEN);
         }
 
-        return new ResponseEntity<>("Logged correctly.", HttpStatus.OK);
+        return new ResponseEntity<>("Logged correctly.", HttpStatus.OK); // TODO Login with session
     }
 
     public ResponseEntity<?> addUser(User newUser) throws NoSuchAlgorithmException, InvalidKeySpecException {

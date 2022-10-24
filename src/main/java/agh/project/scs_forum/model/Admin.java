@@ -12,7 +12,7 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long adminId;
-    private String userId;
+    private String username;
     private String addedBy;
 
 }
