@@ -4,6 +4,7 @@ import static java.lang.Math.ceil;
 
 import agh.project.scs_forum.model.Category;
 import agh.project.scs_forum.model.Post;
+import agh.project.scs_forum.model.ResponsePair;
 import agh.project.scs_forum.repository.CategoryRepository;
 import agh.project.scs_forum.repository.PostRepository;
 import org.springframework.http.HttpStatus;
@@ -56,7 +57,7 @@ public class PostService {
 
         postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(postList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(postList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getPostsByCreationDateDesc(String categoryName, int page) {
@@ -76,7 +77,7 @@ public class PostService {
 
         postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(postList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(postList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getPostsByModificationDateAsc(String categoryName, int page) {
@@ -96,7 +97,7 @@ public class PostService {
 
         postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(postList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(postList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getPostsByModificationDateDesc(String categoryName, int page) {
@@ -116,7 +117,7 @@ public class PostService {
 
         postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(postList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(postList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getPostsByAlphabeticAsc(String categoryName, int page) {
@@ -136,7 +137,7 @@ public class PostService {
 
         postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(postList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(postList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getPostsByAlphabeticDesc(String categoryName, int page) {
@@ -156,7 +157,7 @@ public class PostService {
 
         postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(postList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(postList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getPostById(Long postId) {
@@ -169,10 +170,10 @@ public class PostService {
         }
     }
 
-    public ResponseEntity<?> createPost(Post newPost, Long categoryId) {
-        Optional<Category> category = categoryRepository.findById(categoryId);
+    public ResponseEntity<?> createPost(Post newPost, String categoryName) {
+        Category category = categoryRepository.findByName(categoryName);
 
-        if (category.isEmpty()) {
+        if (category == null) {
             return new ResponseEntity<>("Category with given ID does not exist.", HttpStatus.NOT_FOUND);
         }
 
@@ -182,7 +183,7 @@ public class PostService {
         post.setTitle(newPost.getTitle());
         post.setDescription(newPost.getDescription());
         post.setRating(0);
-        post.setCategoryId(categoryId);
+        post.setCategoryId(category.getCategoryId());
         post.setCreatedBy("x"); // TODO Session
 
         postRepository.save(post);

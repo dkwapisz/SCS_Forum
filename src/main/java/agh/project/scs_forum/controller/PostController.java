@@ -49,9 +49,9 @@ public class PostController {
         return postService.getPostById(postId);
     }
 
-    @PostMapping("/category/{categoryId}/post")
-    public ResponseEntity<?> createPost(@RequestBody Post post, @PathVariable Long categoryId) {
-        return postService.createPost(post, categoryId);
+    @PostMapping("/category/{categoryName}/post")
+    public ResponseEntity<?> createPost(@RequestBody Post post, @PathVariable String categoryName) {
+        return postService.createPost(post, categoryName);
     }
 
     @PutMapping("/post/{postId}")

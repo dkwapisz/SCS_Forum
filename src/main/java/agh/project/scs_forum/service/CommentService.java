@@ -5,6 +5,7 @@ import static java.lang.Math.ceil;
 import agh.project.scs_forum.model.Category;
 import agh.project.scs_forum.model.Comment;
 import agh.project.scs_forum.model.Post;
+import agh.project.scs_forum.model.ResponsePair;
 import agh.project.scs_forum.repository.CommentRepository;
 import agh.project.scs_forum.repository.PostRepository;
 import org.springframework.http.HttpStatus;
@@ -68,7 +69,7 @@ public class CommentService {
 
         commentList = commentList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(commentList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(commentList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getCommentsByCreationDateDesc(Long postId, int page) {
@@ -88,7 +89,7 @@ public class CommentService {
 
         commentList = commentList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(commentList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(commentList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getCommentsByRatingAsc(Long postId, int page) {
@@ -108,7 +109,7 @@ public class CommentService {
 
         commentList = commentList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(commentList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(commentList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getCommentsByRatingDesc(Long postId, int page) {
@@ -128,7 +129,7 @@ public class CommentService {
 
         commentList = commentList.stream().skip(begin).limit(end).collect(Collectors.toList());
 
-        return new ResponseEntity<>(commentList, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponsePair<>(commentList, numberOfPages), HttpStatus.OK);
     }
 
     public ResponseEntity<?> getCommentByCommentId(Long commentId) {
