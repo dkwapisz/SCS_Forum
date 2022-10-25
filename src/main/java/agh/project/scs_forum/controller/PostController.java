@@ -14,34 +14,34 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping("/category/{categoryName}/post/creation/asc")
-    public ResponseEntity<?> getPostsByCreationDateAsc(@PathVariable String categoryName) {
-        return postService.getPostsByCreationDateAsc(categoryName);
+    @GetMapping("/category/{categoryName}/post/creation/asc/page/{page}")
+    public ResponseEntity<?> getPostsByCreationDateAsc(@PathVariable String categoryName, @PathVariable int page) {
+        return postService.getPostsByCreationDateAsc(categoryName, page);
     }
 
-    @GetMapping("/category/{categoryName}/post/creation/desc")
-    public ResponseEntity<?> getPostsByCreationDateDesc(@PathVariable String categoryName) {
-        return postService.getPostsByCreationDateDesc(categoryName);
+    @GetMapping("/category/{categoryName}/post/creation/desc/page/{page}")
+    public ResponseEntity<?> getPostsByCreationDateDesc(@PathVariable String categoryName, @PathVariable int page) {
+        return postService.getPostsByCreationDateDesc(categoryName, page);
     }
 
-    @GetMapping("/category/{categoryName}/post/modified/asc")
-    public ResponseEntity<?> getPostsByModificationDateAsc(@PathVariable String categoryName) {
-        return postService.getPostsByModificationDateAsc(categoryName);
+    @GetMapping("/category/{categoryName}/post/modified/asc/page/{page}")
+    public ResponseEntity<?> getPostsByModificationDateAsc(@PathVariable String categoryName, @PathVariable int page) {
+        return postService.getPostsByModificationDateAsc(categoryName, page);
     }
 
-    @GetMapping("/category/{categoryName}/post/modified/desc")
-    public ResponseEntity<?> getPostsByModificationDateDesc(@PathVariable String categoryName) {
-        return postService.getPostsByModificationDateDesc(categoryName);
+    @GetMapping("/category/{categoryName}/post/modified/desc/page/{page}")
+    public ResponseEntity<?> getPostsByModificationDateDesc(@PathVariable String categoryName, @PathVariable int page) {
+        return postService.getPostsByModificationDateDesc(categoryName, page);
     }
 
-    @GetMapping("/category/{categoryName}/post/alphabetic/asc")
-    public ResponseEntity<?> getPostsByAlphabeticAsc(@PathVariable String categoryName) {
-        return postService.getPostsByAlphabeticAsc(categoryName);
+    @GetMapping("/category/{categoryName}/post/alphabetic/asc/page/{page}")
+    public ResponseEntity<?> getPostsByAlphabeticAsc(@PathVariable String categoryName, @PathVariable int page) {
+        return postService.getPostsByAlphabeticAsc(categoryName, page);
     }
 
-    @GetMapping("/category/{categoryName}/post/alphabetic/desc")
-    public ResponseEntity<?> getPostsByAlphabeticDesc(@PathVariable String categoryName) {
-        return postService.getPostsByAlphabeticDesc(categoryName);
+    @GetMapping("/category/{categoryName}/post/alphabetic/desc/page/{page}")
+    public ResponseEntity<?> getPostsByAlphabeticDesc(@PathVariable String categoryName, @PathVariable int page) {
+        return postService.getPostsByAlphabeticDesc(categoryName, page);
     }
 
     @GetMapping("/post/{postId}")

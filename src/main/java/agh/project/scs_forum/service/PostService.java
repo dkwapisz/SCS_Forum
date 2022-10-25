@@ -1,5 +1,7 @@
 package agh.project.scs_forum.service;
 
+import static java.lang.Math.ceil;
+
 import agh.project.scs_forum.model.Category;
 import agh.project.scs_forum.model.Post;
 import agh.project.scs_forum.repository.CategoryRepository;
@@ -20,6 +22,7 @@ public class PostService {
 
     PostRepository postRepository;
     CategoryRepository categoryRepository;
+    final int MAX_POSTS_IN_PAGE = 20;
 
     public PostService(PostRepository postRepository, CategoryRepository categoryRepository) {
         this.postRepository = postRepository;
@@ -36,7 +39,7 @@ public class PostService {
         return postRepository.findAllByCategoryId(category.getCategoryId());
     }
 
-    public ResponseEntity<?> getPostsByCreationDateAsc(String categoryName) {
+    public ResponseEntity<?> getPostsByCreationDateAsc(String categoryName, int page) {
         List<Post> postList = getAllPostsFromCategory(categoryName);
 
         if (postList.isEmpty()) {
@@ -44,10 +47,19 @@ public class PostService {
         }
 
         postList = postList.stream().sorted(Comparator.comparing(Post::getCreatedAt)).collect(Collectors.toList());
+
+        int allEntities = postList.size();
+        int begin = (page - 1) * MAX_POSTS_IN_PAGE;
+        int end = page * MAX_POSTS_IN_PAGE;
+
+        int numberOfPages = (int) ceil(allEntities / (double) MAX_POSTS_IN_PAGE);
+
+        postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
+
         return new ResponseEntity<>(postList, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> getPostsByCreationDateDesc(String categoryName) {
+    public ResponseEntity<?> getPostsByCreationDateDesc(String categoryName, int page) {
         List<Post> postList = getAllPostsFromCategory(categoryName);
 
         if (postList.isEmpty()) {
@@ -55,10 +67,19 @@ public class PostService {
         }
 
         postList = postList.stream().sorted(Comparator.comparing(Post::getCreatedAt).reversed()).collect(Collectors.toList());
+
+        int allEntities = postList.size();
+        int begin = (page - 1) * MAX_POSTS_IN_PAGE;
+        int end = page * MAX_POSTS_IN_PAGE;
+
+        int numberOfPages = (int) ceil(allEntities / (double) MAX_POSTS_IN_PAGE);
+
+        postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
+
         return new ResponseEntity<>(postList, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> getPostsByModificationDateAsc(String categoryName) {
+    public ResponseEntity<?> getPostsByModificationDateAsc(String categoryName, int page) {
         List<Post> postList = getAllPostsFromCategory(categoryName);
 
         if (postList.isEmpty()) {
@@ -66,10 +87,19 @@ public class PostService {
         }
 
         postList = postList.stream().sorted(Comparator.comparing(Post::getUpdatedAt)).collect(Collectors.toList());
+
+        int allEntities = postList.size();
+        int begin = (page - 1) * MAX_POSTS_IN_PAGE;
+        int end = page * MAX_POSTS_IN_PAGE;
+
+        int numberOfPages = (int) ceil(allEntities / (double) MAX_POSTS_IN_PAGE);
+
+        postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
+
         return new ResponseEntity<>(postList, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> getPostsByModificationDateDesc(String categoryName) {
+    public ResponseEntity<?> getPostsByModificationDateDesc(String categoryName, int page) {
         List<Post> postList = getAllPostsFromCategory(categoryName);
 
         if (postList.isEmpty()) {
@@ -77,10 +107,19 @@ public class PostService {
         }
 
         postList = postList.stream().sorted(Comparator.comparing(Post::getUpdatedAt).reversed()).collect(Collectors.toList());
+
+        int allEntities = postList.size();
+        int begin = (page - 1) * MAX_POSTS_IN_PAGE;
+        int end = page * MAX_POSTS_IN_PAGE;
+
+        int numberOfPages = (int) ceil(allEntities / (double) MAX_POSTS_IN_PAGE);
+
+        postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
+
         return new ResponseEntity<>(postList, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> getPostsByAlphabeticAsc(String categoryName) {
+    public ResponseEntity<?> getPostsByAlphabeticAsc(String categoryName, int page) {
         List<Post> postList = getAllPostsFromCategory(categoryName);
 
         if (postList.isEmpty()) {
@@ -88,10 +127,19 @@ public class PostService {
         }
 
         postList = postList.stream().sorted(Comparator.comparing(Post::getTitle)).collect(Collectors.toList());
+
+        int allEntities = postList.size();
+        int begin = (page - 1) * MAX_POSTS_IN_PAGE;
+        int end = page * MAX_POSTS_IN_PAGE;
+
+        int numberOfPages = (int) ceil(allEntities / (double) MAX_POSTS_IN_PAGE);
+
+        postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
+
         return new ResponseEntity<>(postList, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> getPostsByAlphabeticDesc(String categoryName) {
+    public ResponseEntity<?> getPostsByAlphabeticDesc(String categoryName, int page) {
         List<Post> postList = getAllPostsFromCategory(categoryName);
 
         if (postList.isEmpty()) {
@@ -99,6 +147,15 @@ public class PostService {
         }
 
         postList = postList.stream().sorted(Comparator.comparing(Post::getTitle).reversed()).collect(Collectors.toList());
+
+        int allEntities = postList.size();
+        int begin = (page - 1) * MAX_POSTS_IN_PAGE;
+        int end = page * MAX_POSTS_IN_PAGE;
+
+        int numberOfPages = (int) ceil(allEntities / (double) MAX_POSTS_IN_PAGE);
+
+        postList = postList.stream().skip(begin).limit(end).collect(Collectors.toList());
+
         return new ResponseEntity<>(postList, HttpStatus.OK);
     }
 
