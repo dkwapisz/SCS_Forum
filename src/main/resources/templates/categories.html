@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: html_head(pageTitle='All Categories')" />
+<body>
+<div class="container">
+    <div th:replace="fragments :: header"></div>
+
+    <div class="text-center">
+        <h1>SCS Forum - All categories</h1>
+        <p/>
+        <h4><a th:href="@{/front/category/new}">Create New Category</a></h4>
+        <p/>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>Category ID</th>
+            <th>Name</th>
+            <th>Moderated By</th>
+
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${listCategories}">
+            <td th:text="${category.name}">Name</td>
+            <td th:text="${category.moderatedBy}">Moderated By</td>
+
+<!--            <td>-->
+<!--                <a th:href="@{'/front/category/edit' + ${category.id}}">Edit (it's not working)</a>-->
+<!--                &nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                <a th:href="@{'/front/category/delete' + ${category.id}}">Delete (it's not working)</a>-->
+<!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <div><br/><br/></div>
+</div>
+</body>
+</html>

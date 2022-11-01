@@ -67,25 +67,25 @@ public class UserService {
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<?> changePassword(String username, String oldPass, String newPass)
-            throws NoSuchAlgorithmException, InvalidKeySpecException {
-
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            return new ResponseEntity<>("User " + username + " not found.", HttpStatus.NOT_FOUND);
-        }
-
-        if (!passwordUtils.validatePassword(oldPass, user.getPassword())) {
-            return new ResponseEntity<>("Incorrect password.", HttpStatus.FORBIDDEN);
-        }
-
-        user.setPassword(passwordUtils.generateHash(newPass));
-        user.setTempNewPassword(null);
-        userRepository.save(user);
-
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
+//    public ResponseEntity<?> changePassword(String username, String oldPass, String newPass)
+//            throws NoSuchAlgorithmException, InvalidKeySpecException {
+//
+//        User user = userRepository.findByUsername(username);
+//
+//        if (user == null) {
+//            return new ResponseEntity<>("User " + username + " not found.", HttpStatus.NOT_FOUND);
+//        }
+//
+//        if (!passwordUtils.validatePassword(oldPass, user.getPassword())) {
+//            return new ResponseEntity<>("Incorrect password.", HttpStatus.FORBIDDEN);
+//        }
+//
+//        user.setPassword(passwordUtils.generateHash(newPass));
+//        user.setTempNewPassword(null);
+//        userRepository.save(user);
+//
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
 
     public ResponseEntity<?> deleteUser(String username) {
         User user = userRepository.findByUsername(username);

@@ -38,10 +38,10 @@ public class UserController {
         return userService.addUser(newUser);
     }
 
-    @PutMapping("/changePassword")
-    public ResponseEntity<?> changePassword(@RequestBody User givenUser) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        return userService.changePassword(givenUser.getUsername(), givenUser.getPassword(), givenUser.getTempNewPassword());
-    }
+//    @PutMapping("/changePassword")
+//    public ResponseEntity<?> changePassword(@RequestBody User givenUser) throws NoSuchAlgorithmException, InvalidKeySpecException {
+//        return userService.changePassword(givenUser.getUsername(), givenUser.getPassword(), givenUser.getTempNewPassword());
+//    }
 
     @DeleteMapping("/{username}")
     public ResponseEntity<?> deleteUser(@PathVariable String username) {

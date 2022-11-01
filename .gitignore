@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+keycloak-20.0.0

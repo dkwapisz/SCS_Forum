@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head th:replace="fragments :: html_head(pageTitle='SCS Forum')" />
+<body>
+<div class="container text-center">
+    <div><h1>Welcome to SCS Forum!</h1></div>
+    <div>
+        <br/>
+        <h4><a th:href="@{/front/category/all}">To view posts you have to log in.</a></h4>
+    </div>
+</div>
+</body>
+</html>
