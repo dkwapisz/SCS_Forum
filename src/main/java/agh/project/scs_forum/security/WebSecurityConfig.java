@@ -46,12 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll()
-                .loginPage("/login")
-                .usernameParameter("email")
-                .passwordParameter("pass")
-                .defaultSuccessUrl("/front/category/all")
-                .and()
                 .oauth2Login()
                 .loginPage("/login")
                 .userInfoEndpoint()
@@ -59,9 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .defaultSuccessUrl("/front/category/all")
                 .and()
-                .logout().logoutSuccessUrl("/").permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/403");
+                .logout().logoutSuccessUrl("/").permitAll();
+
     }
 
     @Autowired
